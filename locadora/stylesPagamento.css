@@ -1,0 +1,560 @@
+/* stylesPagamento.css */
+
+/* === Reset Básico e Estilos Globais === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que footer fique no final */
+}
+
+/* === CABEÇALHO (header) === */
+.cabecalho {
+    background-color: #D32F2F; /* Cor principal */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 60px;
+    /* margin: 10px 20px;  Ajustar margem conforme necessário */
+    vertical-align: middle;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-left: 20px;
+    position: relative;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px 0;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+/* Dropdown */
+.dropdown-conteudo {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10;
+    right: 0;
+    margin-top: 5px;
+}
+
+.dropdown-conteudo a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-conteudo a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-conteudo {
+    display: block;
+}
+
+/* === BARRA DE PROGRESSO === */
+.progress-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Margem vertical e centralização horizontal */
+    width: 80%;       /* Largura da barra */
+    box-sizing: border-box;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex-grow: 1; /* Ocupa espaço igual */
+    text-align: center;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background-color: white;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.step.active .circle {
+    border-color: #008000; /* Verde */
+    background-color: #008000;
+}
+
+.label {
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+}
+
+.step.active .label {
+    color: #008000; /* Verde */
+    font-weight: bold;
+}
+
+.line {
+    position: absolute;
+    width: calc(100% - 40px); /* Ajusta ao tamanho da barra */
+    height: 2px;
+    background-color: #ccc;
+    top: 19px; /* Alinha com o centro dos círculos */
+    left: 20px;
+    z-index: 0; /* Fica atrás dos círculos */
+}
+
+/* === CONTEÚDO PRINCIPAL (main) === */
+main {
+    display: flex; /* Layout em duas colunas */
+    flex: 1; /* Ocupa espaço vertical restante */
+    width: 80%; /* Mesma largura da barra de progresso */
+    margin: 0 auto 20px auto; /* Centraliza, margem inferior */
+    gap: 40px; /* Espaço entre as colunas */
+}
+
+/* === SEÇÃO DE PAGAMENTO (Esquerda) === */
+.payment-section {
+    flex: 2; /* Ocupa 2/3 do espaço */
+    padding: 30px; /* Padding interno */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.payment-section h1 {
+    margin-top: 0; /* Remove margem do topo */
+    margin-bottom: 25px; /* Espaço abaixo do título */
+    color: #333;
+    text-align: center; /* Centraliza título */
+    font-size: 1.6em;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre as opções de pagamento */
+}
+
+.payment-option {
+    border: 1px solid #ccc;
+    padding: 20px; /* Padding aumentado */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+    position: relative; /* Para posicionar elementos internos se necessário */
+}
+
+.payment-option:hover {
+    border-color: #4CAF50; /* Verde no hover */
+    background-color: #f8f8f8;
+}
+
+/* Estilo quando o radio dentro da opção está selecionado */
+.payment-option:has(input[type="radio"]:checked) {
+     border-color: #4CAF50; /* Borda verde quando selecionado */
+     background-color: #f0fff0; /* Fundo levemente esverdeado */
+}
+
+
+.payment-option > label { /* Label principal da opção */
+    font-weight: bold;
+    display: flex; /* Alinha radio e texto */
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1em; /* Tamanho maior */
+    margin-bottom: 5px; /* Espaço antes do valor */
+}
+
+.payment-option input[type="radio"] {
+    margin-right: 12px; /* Espaço maior */
+    cursor: pointer;
+    /* Aparência customizada do radio (opcional) */
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+    top: 2px; /* Ajuste fino vertical */
+}
+.payment-option input[type="radio"]:checked {
+    border-color: #4CAF50;
+    background-color: #4CAF50;
+}
+.payment-option input[type="radio"]:checked::after { /* Bolinha interna */
+     content: '';
+     display: block;
+     width: 8px;
+     height: 8px;
+     background: white;
+     border-radius: 50%;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+}
+
+
+/* Parágrafo com o valor da opção */
+.payment-option > p {
+    margin-top: 5px;
+    margin-left: 30px; /* Alinha com o texto do label */
+    font-size: 1.1em; /* Tamanho do valor */
+    font-weight: bold;
+    color: #333;
+}
+
+/* Cores específicas para valores */
+.valor-pix { color: #167d3f; } /* Verde */
+.valor-credit { color: #333; }
+.valor-pay-later { color: #555; }
+
+/* Div que contém o formulário específico de cada opção */
+.payment-form { /* Classe comum para os forms */
+    display: none; /* Oculto por padrão */
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    margin-left: 30px; /* Indenta o formulário */
+}
+
+/* Estilos para formulário de Cartão de Crédito */
+#credit-card-form .form-group {
+    margin-bottom: 15px; /* Espaço abaixo de cada grupo */
+}
+#credit-card-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: normal; /* Labels normais dentro do form */
+    font-size: 0.9em;
+    color: #555;
+}
+#credit-card-form input[type="text"] { /* Inputs de texto */
+    width: 100%;
+    padding: 10px; /* Padding maior */
+    margin-top: 0; /* Remove margem padrão */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+#credit-card-form .form-row { /* Linha para validade e CVV */
+    display: flex;
+    gap: 15px; /* Espaço entre validade e CVV */
+}
+#credit-card-form .form-row .form-group {
+    flex: 1; /* Ocupam espaço igual */
+    margin-bottom: 0; /* Remove margem inferior dentro da row */
+}
+
+/* Estilos para label de Termos (comum a todos os forms) */
+.terms-label {
+    display: flex !important; /* Garante flex */
+    align-items: flex-start; /* Alinha checkbox no topo */
+    margin-top: 20px !important; /* Espaço acima */
+    font-weight: normal !important;
+    font-size: 0.9em !important;
+    color: #555;
+    cursor: pointer;
+    line-height: 1.4; /* Melhora leitura */
+}
+
+.terms-label input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+    margin-top: 3px; /* Ajuste fino vertical */
+    flex-shrink: 0; /* Não encolhe */
+    cursor: pointer;
+    /* Aparência customizada (opcional) */
+    appearance: none;
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    position: relative;
+}
+.terms-label input[type="checkbox"]:checked {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+.terms-label input[type="checkbox"]:checked::after { /* Checkmark */
+     content: '\2713'; /* Código unicode para checkmark */
+     font-size: 12px;
+     color: white;
+     position: absolute;
+     top: 48%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     font-weight: bold;
+}
+
+.terms-label a { /* Estilo do link para termos */
+     color: #D32F2F; /* Vermelho */
+     text-decoration: underline;
+}
+.terms-label a:hover {
+     color: #a02424; /* Vermelho mais escuro */
+}
+
+
+/* Botão Final de Pagamento */
+.pay-button {
+    background-color: #167d3f; /* Verde escuro */
+    color: white;
+    padding: 14px 25px; /* Padding maior */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold; /* Negrito */
+    margin-top: 25px; /* Espaço acima */
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.pay-button:hover {
+    background-color: #115e2f; /* Verde mais escuro no hover */
+}
+
+/* Estilo para botão desabilitado (ex: termos não aceitos) */
+.pay-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* === SEÇÃO DE RESUMO (Direita) === */
+.right-section {
+    flex: 1; /* Ocupa 1/3 do espaço */
+    position: sticky;
+    top: 20px; /* Mantém no topo ao rolar */
+    align-self: flex-start;
+    min-width: 0; /* Permite encolher */
+    height: fit-content; /* Altura baseada no conteúdo */
+}
+
+.resumo {
+    background-color: #f9f9f9;
+    padding: 25px; /* Padding aumentado */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: auto 1fr; /* Label auto, Valor ocupa resto */
+    gap: 12px 15px; /* Espaçamento linha/coluna */
+    align-items: baseline; /* Alinha texto pela base */
+}
+
+.resumo h2 {
+    grid-column: 1 / -1; /* Ocupa as duas colunas */
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.4em;
+    color: #333;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.resumo .car-image { /* Classe específica */
+    grid-column: 1 / -1;
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto; /* Centraliza */
+    border-radius: 4px;
+}
+
+#nomeCarro { /* Estilo para nome do carro */
+    grid-column: 1 / -1;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 1.15em;
+    color: #333;
+}
+
+.resumo-label {
+    font-weight: normal;
+    text-align: left;
+    grid-column: 1 / 2;
+    color: #555;
+    font-size: 0.95em;
+}
+/* Label do Total */
+.resumo-label.total-label {
+     font-size: 1.1em;
+     font-weight: bold;
+     color: #333;
+}
+
+
+.resumo-valor {
+    font-weight: bold;
+    text-align: right;
+    grid-column: 2 / 3;
+    white-space: nowrap;
+    color: #333;
+    font-size: 0.95em;
+}
+/* Valor Total Final */
+.resumo-valor.total-final {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #167d3f; /* Verde */
+}
+
+/* Linhas divisórias (<hr>) */
+.resumo-divider {
+    grid-column: 1 / -1;
+    border: 0;
+    border-top: 1px solid #e0e0e0;
+    margin: 5px 0; /* Reduzir margem se necessário */
+}
+.resumo-divider.total-divider { /* Linha antes do total */
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+/* === RODAPÉ (footer) === */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    margin-top: auto; /* Garante que fique no final */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.location-info {
+    text-align: center;
+    display: block;
+    font-size: 0.9em;
+}
+
+#weather-temp { font-weight: bold; }
+#weather-desc { font-style: italic; margin-left: 5px; }
+
+
+/* === MEDIA QUERIES (Responsividade) === */
+
+/* Telas Médias (Tablets) */
+@media (max-width: 992px) {
+    main {
+        width: 90%; /* Ajusta largura do conteúdo */
+        gap: 25px; /* Reduz espaço entre colunas */
+    }
+    .progress-bar {
+        width: 90%; /* Ajusta largura da barra */
+    }
+    .label { font-size: 10px; }
+    .circle { width: 18px; height: 18px; }
+    .line { top: 18px; }
+
+    .payment-section, .resumo {
+         padding: 20px; /* Reduz padding interno */
+    }
+    .payment-option {
+         padding: 15px;
+    }
+    .payment-option > label { font-size: 1em; }
+    .payment-option > p { font-size: 1em; margin-left: 28px;}
+    .payment-form { margin-left: 28px;}
+}
+
+/* Telas Pequenas (Celulares) */
+@media (max-width: 768px) {
+    /* Cabeçalho empilhado */
+    .cabecalho { flex-direction: column; align-items: center; padding: 10px; }
+    .logo img { height: 50px; margin: 10px 0; }
+    .menu ul { flex-direction: column; align-items: center; width: 100%; }
+    .menu li { margin-left: 0; margin-bottom: 5px; width: 100%; text-align: center; }
+    .menu a { padding: 8px 0; }
+    .dropdown-conteudo { position: static; box-shadow: none; background-color: #c22a2a; display: none; width: 100%; margin-top: 5px; }
+    .dropdown-conteudo a { color: white; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);}
+    .dropdown-conteudo a:last-child { border-bottom: none; }
+    .dropdown:hover .dropdown-conteudo { display: block; } /* Ou usar JS para clique */
+
+    /* Esconder barra de progresso */
+    .progress-bar { display: none; }
+
+    /* Conteúdo empilhado */
+    main {
+        flex-direction: column; /* Empilha pagamento e resumo */
+        width: 95%;
+        gap: 20px;
+        /* padding: 0 10px 15px 10px; /* Ajusta padding */
+    }
+    .payment-section, .right-section {
+        width: 100%;
+        position: static; /* Remove sticky */
+    }
+    .payment-section { padding: 20px; }
+    .resumo { padding: 20px; }
+
+    /* Ajustes no form de cartão */
+    #credit-card-form .form-row {
+        flex-direction: column; /* Empilha validade e CVV */
+        gap: 0;
+    }
+     #credit-card-form .form-row .form-group {
+          margin-bottom: 15px; /* Espaço entre validade e CVV */
+     }
+      #credit-card-form .form-row .form-group:last-child {
+           margin-bottom: 0;
+      }
+
+    /* Ajustes gerais de fonte */
+    body { font-size: 14px; }
+    input, select, .btn, .pay-button { font-size: 14px; }
+    label { font-size: 13px; }
+    .payment-section h1 { font-size: 1.4em; }
+    .resumo h2 { font-size: 1.2em; }
+    .resumo-valor.total-final { font-size: 1.25em; }
+    .pay-button { font-size: 1em; padding: 12px 20px;}
+}

@@ -1,0 +1,212 @@
+/* Estilos gerais do body */
+body {
+    font-family: 'Roboto', sans-serif; /* Usando Roboto consistentemente */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o footer fique no fim */
+}
+
+/* --- CABEÇALHO --- */
+header {
+    background-color: #D32F2F;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.logo img {
+    height: 60px;
+    margin: 10px 40px; /* Margem original para index */
+    vertical-align: middle;
+}
+.menu ul { list-style: none; display: flex; margin: 0; padding: 0; }
+.menu li { margin-left: 20px; position: relative; }
+.menu a { color: white; text-decoration: none; font-size: 16px; display: block; padding: 10px 0; }
+.menu a:hover { text-decoration: underline; }
+
+/* --- DROPDOWN --- */
+.dropdown-conteudo {
+    display: none; position: absolute; background-color: white; min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 10; right: 0; margin-top: 5px;
+}
+.dropdown-conteudo li { margin: 0; }
+.dropdown-conteudo a { color: #333; padding: 12px 16px; text-decoration: none; display: block; text-align: left; }
+.dropdown-conteudo a:hover { background-color: #f1f1f1; }
+.dropdown:hover .dropdown-conteudo { display: block; }
+
+/* --- Conteúdo Principal (MAIN) --- */
+main {
+    flex-grow: 1; /* Ocupa o espaço restante */
+    width: 100%;
+    padding: 30px 0; /* Adiciona padding vertical geral */
+    box-sizing: border-box;
+    display: flex; /* Para centralizar o container interno */
+    justify-content: center; /* Centraliza o container interno */
+}
+
+/* Container específico para o conteúdo desta página */
+.conteudo-pagina {
+    width: 100%;
+    max-width: 1100px; /* Ajuste a largura máxima conforme necessário */
+    padding: 0 20px; /* Espaçamento lateral */
+    box-sizing: border-box;
+}
+
+
+/* ==================== ESTILOS ESPECÍFICOS PARA SINISTRO.CSS ==================== */
+
+/* Título Principal da Página */
+.conteudo-pagina h1 {
+    text-align: center;
+    color: #333; /* Cor mais escura para o título principal */
+    font-size: 1.6em; /* Tamanho do título */
+    margin-bottom: 40px; /* Espaçamento abaixo do título */
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+/* Bloco de Dica (Imagem + Texto) */
+.dica-block {
+    display: flex; /* Coloca imagem e texto lado a lado */
+    align-items: flex-start; /* Alinha itens ao topo */
+    margin-bottom: 40px; /* Espaçamento entre os blocos */
+    padding: 25px; /* Espaçamento interno */
+    background-color: #ffffff; /* Fundo branco para cada bloco */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08); /* Sombra suave */
+    overflow: hidden; /* Garante que conteúdo interno respeite bordas */
+}
+
+/* Container da Imagem dentro do Bloco */
+.dica-imagem {
+    flex-basis: 30%; /* Define a largura base da imagem (ajuste conforme necessário) */
+    flex-shrink: 0; /* Impede que a imagem encolha */
+    margin-right: 25px; /* Espaço entre a imagem e o texto */
+}
+
+.dica-imagem img {
+    display: block; /* Remove espaço extra abaixo da imagem */
+    width: 100%; /* Faz a imagem ocupar todo o container .dica-imagem */
+    max-width: 100%; /* Garante que a imagem não ultrapasse o container */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 6px; /* Bordas arredondadas na imagem */
+}
+
+/* Container do Texto dentro do Bloco */
+.dica-texto {
+    flex-grow: 1; /* Faz o texto ocupar o espaço restante */
+}
+
+.dica-texto h2 {
+    font-size: 1.3em;
+    color: #D32F2F; /* Cor vermelha do tema para subtítulos */
+    margin-top: 0; /* Remove margem do topo se for o primeiro elemento */
+    margin-bottom: 15px;
+}
+
+.dica-texto p,
+.dica-texto li {
+    font-size: 0.9em; /* Tamanho do texto de descrição */
+    line-height: 1.6; /* Espaçamento entre linhas */
+    color: #555; /* Cor do texto */
+    margin-bottom: 10px; /* Espaçamento abaixo de parágrafos e itens de lista */
+}
+
+.dica-texto ul,
+.dica-texto ol {
+    padding-left: 20px; /* Adiciona indentação padrão para listas */
+    margin-top: 5px;
+}
+
+.dica-texto li {
+    margin-bottom: 8px; /* Espaçamento entre itens da lista */
+}
+
+.dica-texto p:last-child,
+.dica-texto ul:last-child,
+.dica-texto ol:last-child {
+    margin-bottom: 0; /* Remove margem inferior do último elemento */
+}
+
+/* --- AJUSTES RESPONSIVOS --- */
+@media (max-width: 768px) {
+    .conteudo-pagina h1 {
+        font-size: 1.4em;
+        margin-bottom: 30px;
+    }
+
+    .dica-block {
+        flex-direction: column; /* Empilha imagem e texto */
+        padding: 20px;
+    }
+
+    .dica-imagem {
+        flex-basis: auto; /* Reseta a base flex */
+        width: 100%; /* Imagem ocupa toda a largura */
+        margin-right: 0; /* Remove margem lateral */
+        margin-bottom: 20px; /* Adiciona espaço abaixo da imagem */
+    }
+
+    .dica-texto h2 {
+        font-size: 1.2em;
+    }
+
+    .dica-texto p,
+    .dica-texto li {
+        font-size: 0.85em;
+    }
+
+    /* Incluir regras responsivas do header aqui também para consistência */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .menu ul {
+        margin-top: 10px;
+        flex-direction: column;
+        width: 100%;
+    }
+    .menu li {
+        margin-left: 0;
+        width: 100%;
+    }
+    .menu a {
+        padding: 10px;
+        border-bottom: 1px solid #b71c1c;
+    }
+    .menu li:last-child a { border-bottom: none; }
+    .dropdown:hover .dropdown-conteudo { position: static; box-shadow: none; border-top: 1px solid #eee; }
+    .dropdown-conteudo { min-width: 100%; margin-top: 0; }
+}
+
+@media (max-width: 480px) {
+    .conteudo-pagina h1 { font-size: 1.2em; }
+    .dica-block { padding: 15px; }
+    .dica-imagem { margin-bottom: 15px; }
+    .dica-texto h2 { font-size: 1.1em; }
+     .dica-texto p,
+    .dica-texto li { font-size: 0.8em; }
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    margin-top: auto; /* Empurra para o fim da página */
+    width: 100%;
+}
+
+.location-info {
+    text-align: center;
+    margin-left: 0;
+    display: block; /* Garante que ocupe a linha */
+}
+#weather-temp { font-weight: bold; }
+#weather-desc { font-style: italic; margin-left: 5px; }

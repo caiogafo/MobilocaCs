@@ -1,0 +1,378 @@
+/* --- Estilos Globais e do Corpo da Página (body) --- */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: #333;
+    line-height: 1.6;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* --- CABEÇALHO --- */
+header.cabecalho {
+    background-color: #D32F2F;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
+}
+.logo img {
+    height: 60px;
+    margin: 10px 40px; /* Reduzido margem vertical */
+    vertical-align: middle;
+}
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+.menu li {
+    margin-left: 20px;
+    position: relative;
+}
+.menu li:first-child {
+    margin-left: 0;
+}
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px 0;
+    transition: opacity 0.2s;
+}
+.menu a:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+}
+.dropdown-conteudo {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10;
+    right: 0;
+    margin-top: 5px;
+    border-radius: 0 0 4px 4px;
+}
+.dropdown-conteudo li {
+    margin: 0;
+}
+.dropdown-conteudo a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 14px;
+}
+.dropdown-conteudo a:hover {
+    background-color: #f1f1f1;
+    text-decoration: none;
+}
+.dropdown:hover .dropdown-conteudo {
+    display: block;
+}
+/* --- FIM DOS ESTILOS DO CABEÇALHO --- */
+
+/* ===== ESTILOS PARA O FORMULÁRIO DE PESQUISA ===== */
+.search-form-container {
+    background-color: #ffffff;
+    padding: 25px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #eee;
+}
+
+.rental-search-form {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: stretch; /* Garante que os .input-group tenham a mesma altura */
+}
+
+.input-group {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px; /* Padding horizontal para ícone e input */
+    flex-grow: 1;
+    flex-basis: 120px;
+    min-height: 45px; /* Altura mínima para alinhar com o botão */
+    overflow: hidden; /* Evita que conteúdo interno vaze */
+}
+
+.date-group {
+    flex-grow: 2;
+    flex-basis: 150px;
+}
+.time-group {
+    flex-grow: 1;
+    flex-basis: 120px;
+}
+.cupom-group {
+   flex-grow: 1;
+   flex-basis: 150px;
+}
+.button-group {
+    border: none;
+    background: none;
+    padding: 0;
+    flex-grow: 1;
+    flex-basis: 150px;
+}
+
+.input-icon {
+    color: #777;
+    margin-right: 8px;
+    min-width: 16px;
+    text-align: center;
+    flex-shrink: 0; /* Impede que o ícone encolha */
+}
+
+/* --- ESTILOS para inputs nativos dentro do .input-group --- */
+.input-group input[type="date"],
+.input-group input[type="time"],
+.input-group input[type="text"] {
+    border: none !important;
+    outline: none !important;
+    padding: 10px 5px !important;
+    font-size: 1em !important;
+    font-family: 'Roboto', sans-serif !important;
+    width: 100% !important;
+    background: none !important;
+    color: #333 !important;
+    flex-grow: 1 !important;
+    box-shadow: none !important;
+    height: auto !important;
+    line-height: normal !important; /* Use normal para melhor alinhamento vertical */
+    cursor: pointer;
+    min-width: 50px;
+    appearance: none; /* Tenta remover aparência padrão */
+    -webkit-appearance: none;
+    -moz-appearance: textfield; /* Para Firefox em number, pode ajudar em date/time */
+}
+
+/* Estiliza o placeholder (apenas para o input de cupom) */
+.input-group input[type="text"]::placeholder { color: #999; opacity: 1; }
+.input-group input[type="text"]:-ms-input-placeholder { color: #999; }
+.input-group input[type="text"]::-ms-input-placeholder { color: #999; }
+
+/* Tenta controlar o ícone interno do navegador (suporte varia) */
+.input-group input[type="date"]::-webkit-calendar-picker-indicator,
+.input-group input[type="time"]::-webkit-calendar-picker-indicator {
+     opacity: 0.6; /* Deixa um pouco visível */
+     margin-left: 5px;
+     cursor: pointer;
+     /* filter: invert(1); */ /* Pode inverter cor */
+}
+/* Fim dos estilos para inputs nativos */
+
+.search-button {
+    background-color: #00695C;
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    height: 100%; /* Ocupa toda a altura do .button-group */
+    transition: background-color 0.2s;
+}
+.search-button:hover {
+    background-color: #004D40;
+}
+/* ===== FIM DOS ESTILOS DO FORMULÁRIO ===== */
+
+
+/* --- Estilos da seção principal (main) --- */
+main {
+    width: 100%;
+    padding: 30px 20px;
+    flex-grow: 1;
+    background-color: #ffffff; /* Fundo branco para conteúdo principal */
+}
+
+.container-conteudo {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.container-conteudo h1 {
+    font-size: 2.5em;
+    color: #D32F2F; /* Cor do título principal */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+hr.titulo-hr {
+    border: 0;
+    height: 2px;
+    background-color: #e0e0e0;
+    width: 100px;
+    margin: 0 auto 30px auto;
+}
+
+.secao-sobre h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.secao-sobre p {
+    font-size: 1em;
+    color: #444;
+    margin-bottom: 20px;
+    text-align: justify; /* Justifica o texto dos parágrafos */
+}
+
+.secao-sobre ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.secao-sobre li {
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.imagem-destaque, .imagem-secundaria {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto 30px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* --- RODAPÉ NOVO --- */
+footer {
+    background-color: #333;  /* Fundo escuro */
+    color: #eee;           /* Texto claro */
+    text-align: center;
+    padding: 15px 10px;
+    margin-top: auto;      /* Empurra para o fim da página */
+    width: 100%;           /* Garante largura total */
+    font-size: 0.9em;      /* Tamanho de fonte */
+    box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+.location-info {
+    text-align: center;
+}
+
+.location-info i { /* Estilo para o ícone */
+    margin-right: 8px;
+    color: #ccc; /* Cor do ícone */
+}
+
+#weather-temp { font-weight: bold; }
+#weather-desc { font-style: italic; margin-left: 5px; }
+/* --- FIM RODAPÉ NOVO --- */
+
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 992px) {
+     .date-group, .time-group, .cupom-group, .button-group {
+         flex-basis: auto;
+         min-width: 180px;
+     }
+     .date-group { flex-grow: 2; }
+     .time-group { flex-grow: 1; }
+     .cupom-group { flex-grow: 1; }
+     .button-group { flex-grow: 1; }
+}
+
+@media (max-width: 768px) {
+    /* Cabeçalho */
+    header.cabecalho { flex-direction: column; padding-bottom: 0; }
+    .logo { width: 100%; text-align: center; margin-bottom: 0; }
+    .logo img { margin: 10px auto; }
+    .menu { width: 100%; }
+    .menu ul { flex-direction: column; align-items: stretch; width: 100%; margin-top: 0; }
+    .menu li { margin: 0; width: 100%; text-align: center; border-top: 1px solid rgba(255,255,255,0.2); }
+    .menu li:first-child { border-top: none; }
+    .menu a { padding: 12px 10px; }
+    .dropdown-conteudo { position: static; box-shadow: none; width: 100%; background-color: #c22a2a; border-radius: 0; margin-top: 0; }
+    .dropdown-conteudo a { text-align: center; color: white; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
+    .dropdown-conteudo li:last-child a { border-bottom: none; }
+    .dropdown-conteudo a:hover { background-color: #b02626; }
+    .dropdown:hover .dropdown-conteudo { display: block; }
+
+    /* Formulário */
+    .search-form-container { padding: 15px; }
+    .rental-search-form { gap: 10px; }
+    .form-row { gap: 10px; }
+    .input-group {
+        flex-basis: calc(50% - 5px) !important; /* Tenta colocar 2 por linha */
+        flex-grow: 1 !important;
+        padding: 0 10px;
+    }
+     .cupom-group { flex-basis: calc(50% - 5px) !important; }
+     .button-group { flex-basis: 100% !important; height: 45px; margin-top: 5px; }
+
+    .search-button { padding: 10px 15px; }
+
+    /* Conteúdo Principal */
+    main { padding: 20px 15px; }
+    .container-conteudo h1 { font-size: 2em; }
+    .secao-sobre h2 { font-size: 1.5em; }
+    .secao-sobre p, .secao-sobre li { font-size: 0.95em; }
+}
+
+@media (max-width: 480px) {
+    /* Menu */
+     .menu a { font-size: 16px; padding: 15px 10px; }
+     /* Formulário */
+     .input-group {
+         flex-basis: 100% !important; /* Cada grupo ocupa uma linha */
+     }
+     .button-group { margin-top: 10px; }
+     .input-group input[type="date"],
+     .input-group input[type="time"],
+     .input-group input[type="text"] {
+         font-size: 0.95em !important;
+     }
+
+    /* Conteúdo */
+    .container-conteudo h1 { font-size: 1.8em; }
+    hr.titulo-hr { width: 80px; margin-bottom: 20px; }
+     .secao-sobre h2 { font-size: 1.3em; }
+     .secao-sobre p, .secao-sobre li { font-size: 0.9em; }
+    /* Rodapé */
+    footer { font-size: 0.8em; }
+}

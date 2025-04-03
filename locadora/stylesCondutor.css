@@ -1,0 +1,558 @@
+/* stylesCondutor.css */
+
+/* === ESTILOS GLOBAIS === */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;          /* Para alinhar footer no final */
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* === CABEÇALHO (header) === */
+header.cabecalho { /* Usando classe para consistência */
+    background-color: #D32F2F;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 60px;
+    margin: 10px 40px; /* Manter margem específica se necessário */
+    vertical-align: middle;
+}
+
+nav.menu ul { /* Usando classe para consistência */
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav.menu li {
+    margin-left: 20px;
+    position: relative;
+}
+
+nav.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px 0;
+}
+
+nav.menu a:hover {
+    text-decoration: underline;
+}
+
+/* Dropdown */
+.dropdown-conteudo {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Garante que fique sobre outros elementos */
+    right: 0;
+    margin-top: 5px; /* Pequeno espaço */
+}
+
+/* Removido .dropdown-conteudo li (não existe no HTML) */
+.dropdown-conteudo a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-conteudo a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-conteudo {
+    display: block;
+}
+
+/* === BARRA DE PROGRESSO === */
+.progress-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Centraliza e adiciona margem */
+    width: 80%; /* Largura da barra */
+    box-sizing: border-box;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background-color: white;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.step.active .circle {
+    border-color: #008000;
+    background-color: #008000;
+}
+
+.label {
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+}
+
+.step.active .label {
+    color: #008000;
+    font-weight: bold;
+}
+
+.line {
+    position: absolute;
+    width: calc(100% - 40px);
+    height: 2px;
+    background-color: #ccc;
+    top: 19px;
+    left: 20px;
+    z-index: 0;
+}
+
+/* === CONTAINER PRINCIPAL E LAYOUT === */
+.container {
+    width: 80%; /* Largura do container principal */
+    margin: 0 auto 20px auto; /* Centraliza, margem inferior */
+    display: flex;
+    justify-content: space-between; /* Espaço entre form e resumo */
+    gap: 40px; /* Espaço aumentado entre as colunas */
+    flex: 1; /* Ocupa espaço vertical restante */
+}
+
+/* Coluna Esquerda: Formulário */
+.form-wrapper {
+    flex: 2; /* Ocupa 2/3 do espaço */
+    padding: 30px; /* Padding interno aumentado */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* === ESTILOS DO FORMULÁRIO === */
+#rental-form h2 {
+    margin-top: 0;
+    margin-bottom: 25px; /* Mais espaço abaixo do título */
+    color: #333;
+    text-align: center; /* Centralizar título do form */
+    font-size: 1.6em; /* Tamanho maior */
+}
+
+.form-row {
+    display: flex;
+    gap: 20px; /* Espaço entre campos na mesma linha */
+    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+    margin-bottom: 15px; /* Espaço abaixo de cada linha */
+}
+
+.form-row:last-of-type {
+     margin-bottom: 0; /* Remove margem da última linha antes dos botões */
+}
+
+.form-group {
+    flex: 1 1 calc(50% - 10px); /* Tenta ocupar 50% (-gap/2), com base mínima */
+    min-width: 200px; /* Largura mínima antes de quebrar */
+    /* margin-bottom removido daqui, agora está no .form-row */
+}
+
+/* Modificador para campo ocupar linha inteira */
+.form-group.full-width {
+    flex-basis: 100%; /* Ocupa 100% da largura */
+    min-width: 100%; /* Garante 100% */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Estilo para inputs de texto, email, tel e selects */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que padding não aumente a largura */
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #4CAF50; /* Destaque verde no foco */
+    outline: none; /* Remove outline padrão */
+}
+
+/* Classe para indicar erro no input */
+.input-error {
+    border-color: red !important; /* Borda vermelha para erro (importante para sobrescrever foco) */
+}
+
+/* Estilo para mensagens de erro */
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none; /* Oculto por padrão */
+    margin-top: 4px; /* Espaço acima da mensagem */
+}
+
+/* Estilo para grupo de checkbox */
+.form-group-checkbox {
+    margin-top: 15px; /* Espaço acima do checkbox */
+    display: flex;
+    align-items: center; /* Alinha checkbox e label */
+    width: 100%; /* Ocupa largura total na linha */
+}
+
+.form-group-checkbox input[type="checkbox"] {
+    margin-right: 8px;
+    width: auto; /* Tamanho automático */
+    cursor: pointer;
+    /* Estilos adicionais de aparência se necessário */
+    width: 16px;
+    height: 16px;
+}
+
+.form-group-checkbox label {
+    font-weight: normal; /* Label normal */
+    margin-bottom: 0; /* Remove margem inferior */
+    cursor: pointer;
+    font-size: 14px; /* Ajustar tamanho se necessário */
+}
+
+/* === ESTILOS DOS BOTÕES === */
+.button-group {
+    display: flex;
+    justify-content: space-between; /* Botões nas extremidades */
+    margin-top: 30px; /* Espaço acima dos botões */
+    flex-wrap: wrap; /* Permite quebra em telas pequenas */
+    gap: 10px; /* Espaço entre botões se quebrar linha */
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none; /* Para o link 'Voltar' */
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Botão Secundário (Voltar) */
+.btn-secondary {
+    background-color: transparent;
+    color: #D32F2F; /* Vermelho */
+    border: 1px solid #D32F2F;
+}
+
+.btn-secondary:hover {
+    background-color: #D32F2F;
+    color: white;
+}
+
+/* Botão Primário (Continuar) */
+.btn-primary {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: 1px solid #4CAF50; /* Borda da mesma cor */
+}
+
+.btn-primary:hover {
+    background-color: #45a049; /* Verde mais escuro */
+    border-color: #45a049;
+}
+
+/* === COLUNA DIREITA (Resumo) === */
+.right-section {
+    flex: 1; /* Ocupa 1/3 do espaço */
+    position: sticky; /* Fica fixo ao rolar */
+    top: 20px; /* Distância do topo */
+    align-self: flex-start; /* Alinha ao topo */
+    min-width: 0; /* Permite encolher se necessário */
+    height: fit-content; /* Altura baseada no conteúdo */
+}
+
+.resumo {
+    background-color: #f9f9f9;
+    padding: 25px; /* Padding aumentado */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: auto 1fr; /* Label auto-ajusta, Valor ocupa resto */
+    gap: 12px 15px; /* Espaçamento linha/coluna aumentado */
+    align-items: baseline; /* Alinha texto pela base */
+}
+
+.resumo h2 {
+    grid-column: 1 / -1; /* Ocupa as duas colunas */
+    margin-top: 0;
+    margin-bottom: 20px; /* Espaço maior abaixo do título */
+    text-align: center;
+    font-size: 1.4em;
+    color: #333;
+    padding-bottom: 10px; /* Espaço antes da borda */
+    border-bottom: 1px solid #eee; /* Borda abaixo do título */
+}
+
+.resumo .car-image { /* Classe específica para imagem no resumo */
+    grid-column: 1 / -1;
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto; /* Centralizado, margem inferior */
+    border-radius: 4px;
+}
+
+/* Estilo para o nome do carro (ID usado no HTML) */
+#nomeCarro {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 1.15em;
+    color: #333;
+}
+
+.resumo-label {
+    font-weight: normal;
+    text-align: left;
+    grid-column: 1 / 2; /* Primeira coluna */
+    color: #555;
+    font-size: 0.95em;
+}
+/* Classe opcional para label do total */
+.resumo-label.total-label {
+    font-size: 1.1em; /* Tamanho maior para "Total" */
+    font-weight: bold;
+    color: #333;
+}
+
+
+.resumo-valor {
+    font-weight: bold;
+    text-align: right;
+    grid-column: 2 / 3; /* Segunda coluna */
+    white-space: nowrap; /* Evita quebra de linha */
+    color: #333;
+    font-size: 0.95em;
+}
+
+/* Estilo para o valor total final */
+.resumo-valor.total-final {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #167d3f; /* Verde */
+    /* padding-top: 5px; Removido, gap do grid controla espaçamento */
+}
+
+/* Linhas divisórias (<hr>) */
+.resumo-divider {
+    grid-column: 1 / -1;
+    border: 0;
+    border-top: 1px solid #e0e0e0; /* Linha clara */
+    margin: 5px 0; /* Ajustar margem conforme necessário */
+}
+
+/* Linha antes do total */
+.resumo-divider.total-divider {
+    border-top: 1px solid #ccc; /* Linha um pouco mais escura */
+    margin-top: 10px; /* Mais espaço antes */
+}
+
+/* === RODAPÉ (footer) === */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    margin-top: auto; /* Garante que fique no final */
+    width: 100%;
+    box-sizing: border-box; /* Inclui padding na largura */
+}
+
+.location-info {
+    text-align: center;
+    /* margin-left: 0; não necessário */
+    display: block;
+    font-size: 0.9em;
+}
+
+#weather-temp {
+    font-weight: bold;
+}
+
+#weather-desc {
+    font-style: italic;
+    margin-left: 5px;
+}
+
+/* === MEDIA QUERIES (Responsividade) === */
+
+/* Tablets e menores (Ex: <= 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column; /* Empilha form e resumo */
+        /* padding: 15px; Removido, padding no .form-wrapper */
+        width: 90%; /* Container mais largo */
+        gap: 20px; /* Reduz espaço entre form e resumo */
+    }
+
+    /* Formulário e Resumo ocupam 100% */
+    .form-wrapper,
+    .right-section {
+        flex: 1; /* Reset flex */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .right-section {
+        position: static; /* Remove sticky */
+        margin-top: 0; /* Remove margem superior quando empilhado */
+        max-height: none;
+    }
+
+    /* Ajustes no Cabeçalho para telas menores */
+    header.cabecalho {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .logo img {
+        height: 50px;
+        margin: 0 0 15px 0; /* Centraliza margem abaixo */
+    }
+    nav.menu ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+    }
+    nav.menu li {
+        margin: 8px 0;
+        width: 100%;
+        text-align: center;
+    }
+    /* Ajuste dropdown mobile (pode ser melhorado com JS para clique) */
+    .dropdown-conteudo {
+        position: static; /* Remove posicionamento absoluto */
+        display: none; /* Esconde por padrão */
+        width: 100%;
+        box-shadow: none;
+        background-color: #c22a2a; /* Fundo escuro para contraste */
+    }
+    .dropdown-conteudo a {
+        padding: 10px 15px;
+        color: white; /* Cor do texto */
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+     .dropdown-conteudo a:last-child { border-bottom: none; }
+    .dropdown:hover .dropdown-conteudo {
+        display: block; /* Mostra no hover (pode precisar de JS para clique) */
+    }
+
+    /* Ajuste Barra de Progresso */
+    .progress-bar {
+        width: 90%; /* Barra mais larga */
+    }
+    .label { font-size: 10px; }
+    .circle { width: 18px; height: 18px; }
+    .line { top: 18px; } /* Ajusta posição da linha */
+}
+
+/* Celulares (Ex: <= 767px) */
+@media (max-width: 767px) {
+    /* Linhas do formulário empilham os campos */
+    .form-row {
+        flex-direction: column; /* Empilha campos */
+        gap: 0; /* Remove gap horizontal */
+        margin-bottom: 0; /* Remove margem da linha */
+    }
+    .form-row .form-group {
+        flex-basis: 100%; /* Garante largura total */
+        margin-bottom: 15px; /* Adiciona margem abaixo de cada campo */
+    }
+    .form-row .form-group:last-child {
+        margin-bottom: 0; /* Remove margem do último campo da linha */
+    }
+    /* Caso especial: se a última linha for só checkbox, ajustar margem */
+    .form-row:has(.form-group-checkbox) {
+         margin-bottom: 15px; /* Garante espaço antes dos botões */
+    }
+
+    /* Botões empilhados */
+    .button-group {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 25px; /* Aumenta espaço acima */
+    }
+    .btn {
+        width: 100%; /* Botões ocupam largura total */
+        box-sizing: border-box;
+    }
+
+    /* Oculta a barra de progresso */
+    .progress-bar {
+        display: none;
+    }
+
+    /* Ajustes no container e padding */
+    .container {
+        width: 95%;
+        margin: 10px auto; /* Reduz margens */
+    }
+    .form-wrapper {
+         padding: 20px; /* Reduz padding */
+    }
+    .resumo {
+        padding: 20px; /* Reduz padding */
+    }
+
+    /* Ajustes gerais de fonte */
+    body { font-size: 14px; } /* Reduz fonte base */
+    input, select, .btn { font-size: 14px; }
+    label { font-size: 13px; }
+    #rental-form h2 { font-size: 1.4em; } /* Reduz título form */
+    .resumo h2 { font-size: 1.2em; } /* Reduz título resumo */
+    .resumo-valor.total-final { font-size: 1.2em; } /* Reduz total */
+}

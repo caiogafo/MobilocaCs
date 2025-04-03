@@ -1,0 +1,558 @@
+body {
+    font-family: 'Roboto', sans-serif; /* Usando Roboto consistentemente */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o footer fique no fim */
+}
+
+/* --- CABEÇALHO --- */
+header {
+    background-color: #D32F2F;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.logo img {
+    height: 60px;
+    margin: 10px 40px; /* Margem original para index */
+    vertical-align: middle;
+}
+.menu ul { list-style: none; display: flex; margin: 0; padding: 0; }
+.menu li { margin-left: 20px; position: relative; }
+.menu a { color: white; text-decoration: none; font-size: 16px; display: block; padding: 10px 0; }
+.menu a:hover { text-decoration: underline; }
+
+/* --- DROPDOWN --- */
+.dropdown-conteudo {
+    display: none; position: absolute; background-color: white; min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 10; right: 0; margin-top: 5px;
+}
+.dropdown-conteudo li { margin: 0; }
+.dropdown-conteudo a { color: #333; padding: 12px 16px; text-decoration: none; display: block; text-align: left; }
+.dropdown-conteudo a:hover { background-color: #f1f1f1; }
+.dropdown:hover .dropdown-conteudo { display: block; }
+
+/* --- CONTEÚDO PRINCIPAL (MAIN) --- */
+main {
+    flex-grow: 1; /* Faz o main ocupar o espaço restante entre header e footer */
+    display: flex; /* Habilita flex para centralizar o .container */
+    justify-content: center; /* Centraliza o .container horizontalmente */
+    align-items: center; /* Centraliza o .container verticalmente */
+    padding: 30px 20px; /* Espaçamento interno no main (ao redor do container) */
+    width: 100%; /* Garante que o main use a largura disponível */
+    box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+/* Container do Formulário Styling */
+.container {
+    background-color: #fff; /* Fundo branco */
+    padding: 30px 40px;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    width: 100%; /* Ocupa a largura disponível dentro do 'main' */
+    max-width: 900px; /* Largura máxima do formulário */
+    /* margin: 20px auto; foi removido pois 'main' agora controla o posicionamento */
+    box-sizing: border-box;
+}
+
+/* Headings e Textos dentro do Container */
+h1 {
+    text-align: center;
+    color: #e74c3c; /* Vermelho do título */
+    margin-top: 0; /* Remove margem superior se for o primeiro elemento */
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 0.9em;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.3em; /* Um pouco maior */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    margin-top: 25px;
+}
+
+.required-note {
+    font-size: 0.8em;
+    color: #888;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Elementos do Formulário */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85em; /* Ligeiramente maior */
+    color: #555;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #e74c3c; /* Destaca a borda no foco */
+    outline: none; /* Remove o outline padrão */
+}
+
+
+textarea {
+    resize: vertical;
+    min-height: 100px; /* Altura mínima */
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23555%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); /* Seta cinza escuro */
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px 10px;
+    padding-right: 35px; /* Mais espaço para a seta */
+    color: #555;
+    cursor: pointer;
+}
+
+/* Layout de Linhas do Formulário */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Três colunas iguais */
+    gap: 20px; /* Espaço entre colunas */
+}
+
+.half-width-row {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr); /* Duas colunas iguais */
+     gap: 20px;
+}
+
+.form-group.full-width {
+     /* Se estiver dentro de um grid, faz span. Senão, já é 100% */
+     grid-column: 1 / -1;
+}
+
+/* Estilo Input de Arquivo */
+.file-input-group {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: normal;
+    font-size: 0.9em;
+    width: 100%;
+    margin-bottom: 0;
+    transition: background-color 0.3s ease;
+}
+
+.file-label:hover {
+    background-color: #e0e0e0;
+}
+
+.file-input {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* Estilo Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+    accent-color: #e74c3c; /* Cor do check */
+    cursor: pointer;
+    transform: scale(1.1); /* Ligeiramente maior */
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    font-weight: normal;
+    font-size: 0.9em;
+    color: #555;
+    cursor: pointer;
+}
+
+/* Ações do Formulário / Botão Enviar */
+.form-actions {
+    text-align: right;
+    margin-top: 25px;
+}
+
+.submit-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 12px 35px; /* Mais padding horizontal */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.05em; /* Ligeiramente maior */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #c0392b; /* Vermelho mais escuro */
+    transform: translateY(-2px); /* Efeito sutil de levantar */
+}
+
+.submit-btn:active {
+    transform: translateY(0); /* Volta ao normal ao clicar */
+}
+
+
+/* --- RODAPÉ (Exemplo básico, adicione se necessário) --- */
+/*
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    margin-top: auto; /* Empurra para o final da página
+    width: 100%;
+    box-sizing: border-box;
+}
+*/
+
+/* --- AJUSTES RESPONSIVOS --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Empilha logo e menu */
+        align-items: flex-start; /* Alinha itens à esquerda */
+        padding: 15px;
+    }
+    .menu ul {
+        margin-top: 10px;
+        flex-direction: column; /* Empilha itens do menu */
+        width: 100%;
+    }
+    .menu li {
+        margin-left: 0; /* Remove margem esquerda */
+        width: 100%;
+    }
+    .menu a {
+        padding: 10px; /* Ajusta padding */
+        border-bottom: 1px solid #b71c1c; /* Linha divisória */
+    }
+    .menu li:last-child a {
+        border-bottom: none; /* Remove última linha */
+    }
+    .dropdown:hover .dropdown-conteudo {
+        position: static; /* Dropdown aparece abaixo, não absoluto */
+        box-shadow: none;
+        border-top: 1px solid #eee;
+    }
+    .dropdown-conteudo {
+        min-width: 100%;
+        margin-top: 0;
+    }
+
+
+    main {
+        padding: 20px 15px; /* Reduz padding em telas menores */
+        align-items: flex-start; /* Permite que o container comece do topo */
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .form-row,
+    .half-width-row {
+        grid-template-columns: 1fr; /* Uma coluna */
+        gap: 0; /* Remove gap entre linhas empilhadas */
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .submit-btn {
+        width: 100%; /* Botão ocupa toda a largura */
+        padding: 15px;
+    }
+    .form-actions {
+        text-align: center; /* Centraliza o botão */
+    }
+
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 1.4em;
+    }
+    /* Outros ajustes finos para telas muito pequenas */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    margin-top: auto; /* Empurra para o fim da página */
+    width: 100%;
+}
+
+.location-info {
+    text-align: center;
+    margin-left: 0;
+    display: block; /* Garante que ocupe a linha */
+}
+#weather-temp { font-weight: bold; }
+#weather-desc { font-style: italic; margin-left: 5px; }
+
+/* Adicione ao final de contato.css */
+
+/* Estilo para input inválido */
+input.input-invalid,
+select.input-invalid,
+textarea.input-invalid {
+    border-color: #D32F2F; /* Vermelho */
+    box-shadow: 0 0 3px rgba(211, 47, 47, 0.5); /* Sombra vermelha suave */
+}
+
+/* Estilo para input válido (opcional, só para feedback positivo) */
+input.input-valid,
+select.input-valid,
+textarea.input-valid {
+    border-color: #388E3C; /* Verde */
+    box-shadow: 0 0 3px rgba(56, 142, 60, 0.5); /* Sombra verde suave */
+}
+
+/* Estilo para a mensagem de status de erro */
+#form-status.error {
+    color: #D32F2F; /* Vermelho */
+    font-weight: bold;
+}
+
+/* Estilo para a mensagem de status de sucesso */
+#form-status.success {
+    color: #388E3C; /* Verde */
+    font-weight: bold;
+}
+
+/* Adicione ou garanta que existam em contato.css */
+
+/* Estilo para input inválido */
+input.input-invalid,
+select.input-invalid,
+textarea.input-invalid {
+    border-color: #D32F2F !important; /* Vermelho (use !important se necessário para sobrescrever outros estilos) */
+    box-shadow: 0 0 3px rgba(211, 47, 47, 0.5);
+}
+
+/* Estilo para input válido (opcional) */
+input.input-valid,
+select.input-valid,
+textarea.input-valid {
+    border-color: #388E3C !important; /* Verde */
+    box-shadow: 0 0 3px rgba(56, 142, 60, 0.5);
+}
+
+/* Estilo para a mensagem de status geral de erro */
+#form-status.error {
+    color: #D32F2F; /* Vermelho */
+    font-weight: bold;
+}
+
+/* Estilo para a mensagem de status geral de sucesso */
+#form-status.success {
+    color: #388E3C; /* Verde */
+    font-weight: bold;
+}
+
+/* Estilo para a mensagem de erro específica do CPF (redundante com o inline, mas bom ter) */
+#cpf-error-message {
+    color: #D32F2F;
+    font-size: 0.8em;
+    margin-top: 4px;
+    /* display: none; é controlado pelo JS */
+}
+
+input.input-invalid,
+select.input-invalid,
+textarea.input-invalid {
+    border-color: #D32F2F !important;
+    box-shadow: 0 0 3px rgba(211, 47, 47, 0.5);
+}
+
+input.input-valid,
+select.input-valid,
+textarea.input-valid {
+    border-color: #388E3C !important;
+    box-shadow: 0 0 3px rgba(56, 142, 60, 0.5);
+}
+
+#form-status.error {
+    color: #D32F2F;
+    font-weight: bold;
+}
+
+#form-status.success {
+    color: #388E3C;
+    font-weight: bold;
+}
+
+#cpf-error-message {
+    color: #D32F2F;
+    font-size: 0.8em;
+    margin-top: 4px;
+}
+
+#confirmar-email-error-message {
+    color: #D32F2F;
+    font-size: 0.8em;
+    margin-top: 4px;
+}
+
+input.input-invalid,
+select.input-invalid,
+textarea.input-invalid {
+    border-color: #D32F2F !important;
+    box-shadow: 0 0 3px rgba(211, 47, 47, 0.5);
+}
+
+input.input-valid,
+select.input-valid,
+textarea.input-valid {
+    border-color: #388E3C !important;
+    box-shadow: 0 0 3px rgba(56, 142, 60, 0.5);
+}
+
+#form-status.error {
+    color: #D32F2F;
+    font-weight: bold;
+}
+
+#form-status.success {
+    color: #388E3C;
+    font-weight: bold;
+}
+
+#cpf-error-message {
+    color: #D32F2F;
+    font-size: 0.8em;
+    margin-top: 4px;
+}
+
+#confirmar-email-error-message {
+    color: #D32F2F;
+    font-size: 0.8em;
+    margin-top: 4px;
+}
+
+/* Estilo Opcional para label quando arquivo selecionado */
+.file-label.file-selected {
+    background-color: #e0f2f7; /* Um azul claro, por exemplo */
+    border-color: #4fc3f7;
+    color: #0277bd;
+}
+
+/* Garante que o cursor ainda seja pointer mesmo selecionado */
+.file-label.file-selected:hover {
+     background-color: #b3e5fc;
+}
+
+/* Estilo original do file-label (precisa estar no seu CSS) */
+.file-label {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: normal;
+    font-size: 0.9em;
+    width: 100%;
+    margin-bottom: 0;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap;      /* Impede que o nome do arquivo quebre linha */
+    overflow: hidden;         /* Esconde o excesso de texto */
+    text-overflow: ellipsis;  /* Adiciona "..." se o nome for muito longo */
+    box-sizing: border-box;   /* Garante padding dentro da largura */
+}
+
+.file-label:hover {
+    background-color: #e0e0e0;
+}
+
+.file-input {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.file-input-group {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}

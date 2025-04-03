@@ -1,0 +1,532 @@
+/* === ESTILOS GERAIS === */
+body {
+    font-family: 'Roboto', sans-serif; /* Define a fonte principal */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Cor de fundo suave */
+    display: flex;
+    flex-direction: column; /* Garante que o footer fique no final */
+    min-height: 100vh; /* Altura mínima da viewport */
+}
+
+main {
+    padding: 20px;
+    max-width: 1600px; /* Largura máxima do conteúdo principal */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    width: 100%;
+    box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+/* === CABEÇALHO (header) === */
+header.cabecalho {
+    background-color: #D32F2F; /* Cor de fundo do cabeçalho */
+    color: white; /* Cor do texto */
+    display: flex;
+    justify-content: space-between; /* Espaça logo e menu */
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.logo img {
+    height: 60px; /* Altura da logo */
+    margin: 10px 40px; /* Espaçamento da logo */
+    vertical-align: middle; /* Alinhamento vertical */
+}
+
+nav.menu ul {
+    list-style: none; /* Remove marcadores da lista */
+    display: flex; /* Alinha itens horizontalmente */
+    margin: 0;
+    padding: 0;
+}
+
+nav.menu li {
+    margin-left: 20px; /* Espaçamento entre itens do menu */
+    position: relative; /* Necessário para o posicionamento do dropdown */
+}
+
+nav.menu a {
+    color: white; /* Cor dos links */
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 16px;
+    display: block;
+    padding: 10px 0;
+}
+
+nav.menu a:hover {
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+}
+
+/* Estilos do Dropdown */
+.dropdown-conteudo {
+    display: none; /* Escondido por padrão */
+    position: absolute; /* Posicionamento relativo ao item pai (.dropdown li) */
+    background-color: white; /* Fundo do dropdown */
+    min-width: 200px; /* Largura mínima */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra */
+    z-index: 10; /* Garante que fique sobre outros elementos */
+    right: 0; /* Alinha à direita do item pai */
+    margin-top: 5px; /* Pequeno espaço acima */
+}
+
+.dropdown-conteudo a {
+    color: #333; /* Cor do texto no dropdown */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left; /* Alinhamento do texto */
+}
+
+.dropdown-conteudo a:hover {
+    background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+}
+
+.dropdown:hover .dropdown-conteudo {
+    display: block; /* Mostra o dropdown ao passar o mouse no item pai */
+}
+
+/* === CONTEÚDO PRINCIPAL (main) === */
+
+/* Barra de Progresso */
+.progress-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Para z-index funcionar */
+    z-index: 1; /* Fica acima da linha */
+    flex-grow: 1; /* Ocupa espaço igualmente */
+    text-align: center;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc; /* Borda padrão */
+    border-radius: 50%; /* Forma de círculo */
+    background-color: white;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.step.active .circle {
+    border-color: #008000; /* Borda verde para passo ativo */
+    background-color: #008000; /* Fundo verde para passo ativo */
+}
+
+.label {
+    font-size: 12px;
+    color: #333; /* Cor padrão do texto */
+    white-space: nowrap; /* Evita quebra de linha */
+}
+
+.step.active .label {
+    color: #008000; /* Cor verde para texto do passo ativo */
+    font-weight: bold; /* Negrito para destaque */
+}
+
+.line {
+    position: absolute;
+    width: calc(100% - 40px); /* Largura da linha (ajustada para não tocar as bordas) */
+    height: 2px;
+    background-color: #ccc; /* Cor da linha */
+    top: 19px; /* Posição vertical alinhada com o centro dos círculos */
+    left: 20px; /* Posição horizontal */
+    z-index: 0; /* Fica abaixo dos círculos */
+}
+
+/* Título da Seção */
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    font-size: 1.5em; /* Tamanho do título */
+}
+
+/* Grid de Opções de Veículos */
+.vehicle-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 280px; /* 3 colunas para carros, 1 fixa para resumo */
+    gap: 20px; /* Espaçamento entre os cards */
+}
+
+/* Card de Veículo Individual */
+.vehicle-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid transparent; /* Borda inicial transparente */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Transição suave */
+    cursor: pointer; /* Indica que é clicável */
+}
+
+.vehicle-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada ao passar o mouse */
+}
+
+.vehicle-card.selected {
+    border-color: #D32F2F; /* Cor da borda quando selecionado */
+    box-shadow: 0 0 10px rgba(211, 47, 47, 0.4); /* Sombra vermelha sutil */
+}
+
+.vehicle-card img {
+    width: 100%;
+    max-width: 180px; /* Largura máxima da imagem */
+    height: 110px; /* Altura fixa */
+    object-fit: contain; /* Mantém proporção da imagem */
+    align-self: center; /* Centraliza a imagem */
+    margin-bottom: 10px;
+}
+
+.vehicle-card h3 {
+    margin: 0 0 4px 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    line-height: 1.3;
+    color: #333;
+}
+
+/* Parágrafo com o modelo do carro */
+.vehicle-card > p:nth-of-type(1) {
+    margin: 0 0 8px 0;
+    font-size: 0.85em;
+    color: #555;
+    min-height: 2.5em; /* Altura mínima para alinhar cards */
+}
+
+/* Seção de características */
+.vehicle-card .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* Layout responsivo das características */
+    gap: 5px 10px; /* Espaçamento entre características */
+    margin: 10px 0;
+    font-size: 0.8em;
+    color: #444;
+    border-top: 1px solid #eee; /* Linha divisória superior */
+    border-bottom: 1px solid #eee; /* Linha divisória inferior */
+    padding: 8px 0;
+}
+
+.vehicle-card .features > div {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre ícone e texto */
+}
+
+.vehicle-card .features i {
+    font-size: 1em;
+    color: #666;
+    width: 16px; /* Largura fixa para alinhamento */
+    text-align: center;
+}
+
+/* Container do preço (para empurrar para baixo) */
+.price-container {
+    margin-top: auto; /* Empurra para o final do card */
+    padding-top: 10px; /* Espaço acima do preço */
+}
+
+.vehicle-card .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #167d3f; /* Cor verde para o preço */
+    margin: 2px 0;
+}
+
+/* Estilo para preço antigo (se existir no HTML) */
+.vehicle-card .old-price {
+    text-decoration: line-through; /* Preço riscado */
+    color: #999;
+    font-size: 0.8em;
+    margin: 0;
+}
+
+/* Texto de aviso/disclaimer */
+.vehicle-card .disclaimer {
+    font-size: 0.7em;
+    color: #777;
+    margin: 2px 0 0;
+}
+
+/* Botão Continuar dentro do Card */
+.continue-button {
+    background-color: #4CAF50; /* Cor de fundo verde */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%; /* Ocupa toda a largura */
+    margin-top: 10px;
+    transition: background-color 0.2s; /* Transição suave */
+}
+
+.continue-button:hover {
+    background-color: #45a049; /* Cor mais escura ao passar o mouse */
+}
+
+
+/* Card de Resumo Lateral */
+.resume-card {
+    grid-column: 4 / 5; /* Ocupa a 4ª coluna do grid */
+    grid-row: 1 / 4; /* Ocupa as 3 primeiras linhas (ajuste conforme necessário) */
+    background-color: #f9f9f9; /* Fundo levemente diferente */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0; /* Borda sutil */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-self: start; /* Alinha no topo do espaço do grid */
+    position: sticky; /* Fica fixo ao rolar */
+    top: 20px; /* Distância do topo */
+    max-height: calc(100vh - 40px); /* Altura máxima com scroll */
+    overflow-y: auto; /* Adiciona scroll vertical se necessário */
+}
+
+.resume-card h3 {
+    margin-top: 0;
+    font-size: 1.3em;
+    color: #333;
+    border-bottom: 1px solid #ddd; /* Linha divisória */
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.resume-section {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee; /* Linha divisória entre seções */
+    display: flex;
+    flex-wrap: wrap; /* Permite quebra de linha */
+    align-items: center;
+}
+
+.resume-section:last-of-type {
+    border-bottom: none; /* Remove a borda da última seção */
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.resume-section p {
+    font-size: 0.9em;
+    color: #444;
+    margin: 2px 0;
+}
+
+.resume-section .label {
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 3px;
+    font-size: 1em;
+    width: 100%; /* Ocupa toda a largura */
+}
+
+/* Estilos específicos para as informações de data/hora */
+.resume-section p#retirada-info,
+.resume-section p#devolucao-info {
+    font-weight: normal;
+    color: #555;
+    flex-grow: 1; /* Ocupa espaço restante */
+    margin-right: 10px; /* Espaço antes do link 'Editar' */
+}
+
+.resume-card a {
+    font-size: 0.85em;
+    color: #D32F2F; /* Cor do link 'Editar' */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    white-space: nowrap; /* Evita quebra de linha */
+}
+
+.resume-card a:hover {
+    color: #a02424; /* Cor mais escura ao passar o mouse */
+    text-decoration: underline;
+}
+
+/* Seção de Vantagens no Resumo */
+.resume-advantages h4 {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.resume-advantages p {
+    font-size: 0.85em;
+    color: #555;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre ícone e texto */
+    width: 100%;
+}
+
+.resume-advantages i {
+    color: #4CAF50; /* Ícone verde */
+    font-size: 1em;
+    width: 16px;
+    text-align: center;
+}
+
+/* === RODAPÉ (footer) === */
+footer {
+    background-color: #333; /* Cor de fundo escura */
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    margin-top: auto; /* Empurra para o fim da página */
+    width: 100%;
+    box-sizing: border-box; /* Inclui padding na largura */
+}
+
+.location-info {
+    text-align: center; /* Centraliza o texto no rodapé */
+    /* margin-left removido pois já é centralizado */
+    display: block; /* Garante que ocupe a linha inteira */
+}
+
+#weather-temp {
+    font-weight: bold; /* Temperatura em negrito */
+}
+
+#weather-desc {
+    font-style: italic; /* Descrição do tempo em itálico */
+    margin-left: 5px; /* Pequeno espaço */
+}
+
+
+/* === MEDIA QUERIES (Responsividade) === */
+
+/* Telas Grandes (Ajuste fino para 2 colunas + resumo) */
+@media (max-width: 1200px) {
+    .vehicle-options {
+        grid-template-columns: repeat(2, 1fr) 260px; /* 2 colunas de carros + resumo */
+    }
+    .resume-card {
+        grid-column: 3 / 4; /* Resumo vai para a 3ª coluna */
+        grid-row: 1 / 5; /* Pode precisar ocupar mais linhas */
+    }
+}
+
+/* Telas Médias (Ajustes gerais) */
+@media (max-width: 992px) {
+    .vehicle-options {
+        gap: 15px; /* Reduz espaçamento */
+    }
+    .resume-card {
+        padding: 15px; /* Reduz padding interno */
+    }
+    /* Ajustes no cabeçalho podem ser necessários aqui se o menu quebrar */
+}
+
+/* Telas Pequenas (Tablets e Celulares Maiores - Layout de 1 coluna) */
+@media (max-width: 768px) {
+    main {
+        padding: 15px; /* Reduz padding geral */
+    }
+    .progress-bar {
+        display: none; /* Oculta barra de progresso */
+    }
+    h2 {
+        font-size: 1.3em; /* Reduz tamanho do título */
+    }
+
+    .vehicle-options {
+        grid-template-columns: 1fr; /* Apenas uma coluna para tudo */
+        gap: 15px;
+    }
+
+    .vehicle-card {
+        grid-column: 1 / 2; /* Garante que ocupe a coluna única */
+        padding: 10px; /* Menos padding interno */
+    }
+
+    .vehicle-card img {
+        height: 100px; /* Imagem menor */
+        max-width: 160px;
+    }
+
+    /* Mover Resumo para baixo */
+    .resume-card {
+        grid-column: 1 / 2; /* Ocupa a coluna única */
+        grid-row: auto; /* Posicionamento automático após os cards */
+        position: static; /* Remove o comportamento 'sticky' */
+        max-height: none; /* Remove altura máxima */
+        margin-top: 20px; /* Espaço acima do resumo */
+        width: 100%; /* Ocupa largura total */
+        box-sizing: border-box;
+    }
+}
+
+/* Telas Muito Pequenas (Celulares) */
+@media (max-width: 600px) {
+    /* Herda estilos de 768px */
+
+    /* Ajustes no Cabeçalho para Mobile */
+    header.cabecalho {
+        flex-direction: column; /* Logo e menu empilhados */
+        padding: 10px;
+    }
+    .logo img {
+        margin: 5px 0; /* Ajusta margem da logo */
+    }
+    nav.menu ul {
+        flex-direction: column; /* Itens do menu empilhados */
+        align-items: center; /* Centraliza itens */
+        width: 100%;
+        margin-top: 10px;
+    }
+    nav.menu li {
+        margin: 5px 0; /* Espaçamento vertical */
+        width: 100%;
+        text-align: center; /* Centraliza texto do link */
+    }
+
+    /* Ajustes Dropdown Mobile */
+    .dropdown-conteudo {
+        position: static; /* Remove posicionamento absoluto */
+        box-shadow: none; /* Remove sombra */
+        width: 100%; /* Ocupa largura total */
+        background-color: #c22a2a; /* Fundo levemente diferente para destacar */
+        margin-top: 0;
+    }
+    .dropdown-conteudo a {
+        text-align: center;
+        color: white; /* Texto branco no dropdown mobile */
+        border-bottom: 1px solid rgba(255,255,255,0.1); /* Linha divisória sutil */
+        padding: 10px 15px;
+    }
+    .dropdown-conteudo a:last-child {
+        border-bottom: none; /* Remove borda do último item */
+    }
+    .dropdown-conteudo a:hover {
+        background-color: #b02626; /* Fundo mais escuro no hover */
+    }
+    /* Esconde dropdown ao clicar fora (pode ser necessário JS adicional se não for desejado) */
+    .dropdown:hover .dropdown-conteudo {
+        /* Em mobile, pode ser melhor controlar com clique via JS,
+           mas o :hover ainda funciona se o usuário mantiver pressionado */
+        display: block;
+    }
+}
